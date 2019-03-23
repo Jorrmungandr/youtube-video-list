@@ -1,6 +1,7 @@
 const quantityOfVideos = 8;
 const videos = document.querySelectorAll('#video-title');
-let info = '';
+
+let info = [];
 
 const download = (filename, text) => {
   let file = document.createElement('a');
@@ -17,14 +18,13 @@ for (let i = 0; i < quantityOfVideos; i++) {
   let link = videos[i].href;
   let name = videos[i].innerText;
 
-  info += `
-    [
-      {
-        name: ${name}
-        link: ${link}
-      }
-    ]  
-  `;
+  info.push(
+    {
+      name,
+      link, 
+    } 
+  );
+  
 }
 
-download("info.txt", info);
+download("info.txt", JSON.stringify(info));
